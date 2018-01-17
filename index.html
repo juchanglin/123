@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title></title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="css/less.css">
+        <script>
+		var pixelRatio = 1 / window.devicePixelRatio;   //还原设备的真实分辨率；
+		//devicePixelRatio设备的像素比；
+		  
+		document.write('<meta name="viewport" content="width=device-width,initial-scale='+pixelRatio+',minimum-scale='+pixelRatio+',maximum-scale='+pixelRatio+'" />');
+		var html=document.getElementsByTagName('html')[0];
+		var pageWidth=html.getBoundingClientRect().width;
+		html.style.fontSize=pageWidth/10+"px"; 
+	</script>
+    <script src="js/vue.js"></script>
+    <link rel="stylesheet" href="Swiper-4.0.7/dist/css/swiper.min.css">
+    <style>
+    html, body {
+      position: relative;
+      height: 100%;
+    }
+    
+    body {
+        background: #eee;
+        font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+        font-size: 14px;
+        color:#000;
+        margin: 0;
+        padding: 0;
+    }
+    .swiper-container {
+        width:100%;
+        height:400px;
+        margin: 2px auto;
+        
+    }
+    .swiper-slide {
+        text-align: center;
+        font-size: 18px;
+        background: #fff;
+        line-height: 300px;
+    }
+  </style>
+    </head>
+    <body>
+        <header>
+                <a href="" class="header_a"><img src="img/logom.png"></a>
+                <a href="" class="header_b"><img src="img/weibo_logo.png"></a>
+                <a href="" class="header_c"><img src="img/citic_logo.png"></a>
+                <a href="" class="header_d"><img src="img/btn-navbar.png"></a>
+            
+       
+        <div class="head">
+            <ul>
+                <li  @click="tabId=0">新闻</li>
+                <li  @click="tabId=1">体育</li>
+                <li  @click="tabId=0">图片</li>
+                <li  @click="tabId=1">财经</li>
+                <li id="head_a"  @click="tabId=0">人民日报</li>
+                <li  @click="tabId=0">健康</li>
+            </ul>
+            <ul>
+                <li  @click="tabId=1">安徽</li>
+                <li  @click="tabId=0">军事</li>
+                <li  @click="tabId=1">社会</li>
+                <li  @click="tabId=0">科普</li>
+                <li id="head_b"  @click="tabId=0">视频 娱乐</li>
+                <li id="head_c"  @click="tabId=0">+</li>
+            </ul>
+        </div>
+        <div v-show="tabId===1">
+              <img src="img/c1.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+         <div class="xj">
+                  <div class="xjp_a" v-for="c in arr">
+                      <img :src="c.b">
+                      <div class="xjp_aa">
+                          <h2>{{c.x}}</h2>
+                          <p>{{c.a}}</p>
+                         <hr style="height:1px;border:none;border-top:2px dashed #0066CC;" />
+                      </div>
+                  </div>
+            </div> 
+        </div>
+        <div v-show="tabId===0">
+            
+        <div class="swiper-container swiper-container-horizontal">
+                 <div class="swiper-wrapper" style="transition-duration: 0ms; transform: translate3d(-3000px, 0px, 0px);">
+                      <div class="swiper-slide">
+                           <a  href="" class="imgcon">
+                               <img src="img/b1.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                       <div class="swiper-slide">
+                           <a href="">
+                               <img src="img/b2.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                       <div class="swiper-slide">
+                           <a href="">
+                               <img src="img/b3.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                       <div class="swiper-slide">
+                           <a href="">
+                               <img src="img/b4.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                       <div class="swiper-slide">
+                           <a href="">
+                               <img src="img/b5.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                       <div class="swiper-slide">
+                           <a href="">
+                               <img src="img/b6.png" alt="" class="m-focus-pic" style="width:100%;
+        height:400px;">
+                           </a>
+                      </div>
+                 </div>
+                 <div class="swiper-pagination swiper-pagination-fraction" style="font-size: 40px;color:#fff">
+                     <span class="swiper-pagination-current">1</span>/
+                     <span class="swiper-pagination-total">6</span>
+                 </div>
+            </div>
+            <div class="fun">
+                 <p>滚动</p>
+                 <span>韩国法院宣布冻结朴槿惠60亿韩元资产</span>
+                 </div>
+            <div class="xjp">
+                  <div class="xjp_a" v-for="c in arr">
+                      <img :src="c.b">
+                      <div class="xjp_aa">
+                          <h2>{{c.x}}</h2>
+                          <p>{{c.a}}</p>
+                         <hr style="height:1px;border:none;border-top:2px dashed #0066CC;" />
+                      </div>
+                  </div>
+            </div> 
+            </div>
+             </header>  
+            <script src="Swiper-4.0.7/dist/js/swiper.min.js">
+                
+            </script>
+            <script>
+            var swiper = new Swiper('.swiper-container', {
+                nextButton: '.swiper-button-next',
+                prevButton: '.swiper-button-prev',
+                pagination: '.swiper-pagination',
+                paginationType: 'fraction'
+               });
+                new Vue({
+                     el:'.xj',
+                     data:{
+                        arr:[{x:'奋发有为 , 开拓全面从严治党新境界', a:'头条',b:'img/4.png'},
+                        {x:'军改后 习近平向哪些部队机构授予军旗?',a:'要闻',b:'img/5.png'},
+                        {x:'外交部:印军高官言论再次表明印军非法越界性质明确',a:'要闻',b:'img/6.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/7.png'},
+                        {x:'奋发有为 , 开拓全面从严治党新境界',a:'要闻',b:'img/8.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/9.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/10.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/11.png'}]
+                     }
+                 })
+            </script>
+            <script>
+                new Vue({
+                     el:'.xjp',
+                     data:{
+                        arr:[{x:'奋发有为 , 开拓全面从严治党新境界', a:'头条',b:'img/4.png'},
+                        {x:'军改后 习近平向哪些部队机构授予军旗?',a:'要闻',b:'img/5.png'},
+                        {x:'外交部:印军高官言论再次表明印军非法越界性质明确',a:'要闻',b:'img/6.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/7.png'},
+                        {x:'奋发有为 , 开拓全面从严治党新境界',a:'要闻',b:'img/8.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/9.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/10.png'},
+                        {x:'以永远在路上的执着把全面从严治党引向深入',a:'要闻',b:'img/11.png'}]
+                     }
+                 })
+            </script>
+             <script>
+        new Vue ({
+           el:'header',
+       data:{
+            tabId:0,
+            }
+        })
+    </script>
+   
+    </body>
+</html>
